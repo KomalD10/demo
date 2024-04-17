@@ -1,0 +1,72 @@
+<html>
+   <head>
+      <title>Wheather app</title>
+
+     </head>
+       <body>
+	     <h1 align = "center">Wheather App</h1>
+		 <br><br>
+		 
+		 <table border = "1" align = "center">
+		 <form>
+		   <tr>
+		     <th>City :</th>
+			 <td><input type = "text" id = "city"></td>
+		   
+		   </tr>
+		   
+		   <tr>
+		     <td colspan="2" align="center"><input type ="submit" value ="submit" id = "submit" ></td>
+		   </tr>
+		   
+		 
+		 
+		 </form>
+		   
+		 
+		 
+		 
+		 
+		 </table>
+		 
+		  <span id ="cityName"></span>
+		   <span id ="temp"></span>
+		  
+		 
+		 
+		<script>
+		  const options = {
+	         method: 'GET',
+	            headers: {
+		           'X-RapidAPI-Key': '77312c4fe0mshea1aa31e0ab64fap188204jsn81ed638681b5',
+                    'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+             	}
+             };
+
+         const weatherapp = (city) => {
+		   cityName.innerHTML = city
+	       
+          fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city='+ city, options)
+          .then((response) => {return response.json()})	
+           .then((data) => { console.log(data)
+          
+		       temp.innerHTML = data.temp
+		   })
+		 }
+		 submit.addEventListener("click",(event) =>{
+		      event.preventDefault()
+			  weatherapp(city.value)})
+			  
+			  weatherapp("pune")
+		 
+		
+		</script>
+	   
+	   </body>       
+
+    	  
+   
+   
+
+
+</html>
